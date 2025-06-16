@@ -1,0 +1,20 @@
+@if (cocktailsIsLoading()) {
+<h2>Chargement en cours...</h2>
+} @else {
+<app-cocktails-list
+  [(selectedCocktailId)]="selectedCocktailId"
+  [likedCocktailIds]="likedCocktailIds()"
+  (likeCocktail)="likeCocktail($event)"
+  (unlikeCocktail)="unlikeCocktail($event)"
+  [cocktails]="cocktails()"
+  class="w-half card"
+></app-cocktails-list>
+@let sc = selectedCocktail(); @if (sc) {
+<app-cocktails-details
+  (likeCocktail)="likeCocktail($event)"
+  (unlikeCocktail)="unlikeCocktail($event)"
+  [cocktail]="sc"
+  [isLiked]="selectedCocktailLiked()"
+  class="w-half card"
+></app-cocktails-details>
+} }

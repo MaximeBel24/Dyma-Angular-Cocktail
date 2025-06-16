@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+
+  @media screen and (max-width: 820px) {
+    flex-direction: column;
+  }
+}
