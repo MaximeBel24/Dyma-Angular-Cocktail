@@ -1,8 +1,9 @@
 import { Component, signal } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-header-menu',
-  imports: [],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './header-menu.component.html',
   styleUrl: './header-menu.component.scss',
 })
@@ -10,11 +11,11 @@ export class HeaderMenuComponent {
   show = signal(false);
   navigations = [
     {
-      path: '#',
-      name: 'Liste des cocktails',
+      path: '/cocktails',
+      name: 'Cocktails',
     },
     {
-      path: '#',
+      path: '/cart',
       name: 'Panier',
     },
   ];

@@ -3,7 +3,7 @@
 <ul>
   @for (link of navigations; track $index) {
   <li (click)="show.set(false)" [class.mb-20]="!$last">
-    <a [href]="link.path">{{ link.name }}</a>
+    <a [routerLink]="link.path" routerLinkActive="active-link">{{ link.name }}</a>
   </li>
   }
 </ul>
