@@ -15,6 +15,10 @@ export const routes: Routes = [
     title: 'Panier'
   },
   {
+    path: 'admin',
+    loadChildren: async() => (await import('./views/admin/admin.routes')).routes
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'cocktails',

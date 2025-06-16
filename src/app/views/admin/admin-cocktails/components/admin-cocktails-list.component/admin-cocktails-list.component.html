@@ -1,0 +1,18 @@
+<h3 class="mb-20">Liste des cocktails</h3>
+<ul>
+  @for (cocktail of cocktails(); track cocktail._id) {
+  <li class="flex gap-12 card align-items-center mb-10">
+    <span class="flex-auto">
+      {{ cocktail.name }}
+    </span>
+    <button [routerLink]="['..', cocktail._id, 'edit']" class="btn btn-primary">
+      Modifier
+    </button>
+    <button (click)="deleteCocktail(cocktail._id)" class="btn btn-danger">
+      Supprimer
+    </button>
+  </li>
+  }@empty {
+  <p>Il n'y a pas de cocktail pour l'instant</p>
+  }
+</ul>

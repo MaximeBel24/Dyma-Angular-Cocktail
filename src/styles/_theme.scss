@@ -33,6 +33,11 @@ body {
   transition: background-color 0.4s;
 }
 
+.btn-danger {
+  background-color: var(--danger);
+  color: white;
+}
+
 .btn-primary {
   background-color: var(--primary);
   color: white;
