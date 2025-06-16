@@ -10,7 +10,7 @@
   }
 </ul>
 <div class="flex">
-  <button class="btn btn-primary">Ajouter cocktail</button>
+  <button class="btn btn-primary" (click)="addIngredients.emit(c.ingredients)">Ajouter le cocktail au panier</button>
   <span class="flex-auto"></span>
   @if (isLiked()) {
   <button class="btn btn-primary" (click)="unlikeCocktail.emit(c._id)">

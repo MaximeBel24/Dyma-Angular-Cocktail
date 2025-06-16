@@ -12,4 +12,5 @@ export class CocktailsDetailsComponent {
   isLiked = input.required<boolean>();
   likeCocktail = output<string>();
   unlikeCocktail = output<string>();
+  addIngredients = output<string[]>();
 }

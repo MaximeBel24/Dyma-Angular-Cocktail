@@ -1,18 +1,18 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { CocktailsService } from '../../shared/services/cocktails.service';
 import { CartService } from '../../shared/services/cart.service';
-import { CocktailsListComponent } from "./components/cocktails-list/cocktails-list.component";
-import { CocktailsDetailsComponent } from "./components/cocktails-details/cocktails-details.component";
+import { CocktailsListComponent } from './components/cocktails-list/cocktails-list.component';
+import { CocktailsDetailsComponent } from './components/cocktails-details/cocktails-details.component';
 
 @Component({
   selector: 'app-cocktails',
   imports: [CocktailsListComponent, CocktailsDetailsComponent],
   templateUrl: './cocktails.component.html',
-  styleUrl: './cocktails.component.scss'
+  styleUrl: './cocktails.component.scss',
 })
 export class CocktailsComponent {
-    cocktailsService = inject(CocktailsService);
-  cartService = inject(CartService);
+  private cocktailsService = inject(CocktailsService);
+  private cartService = inject(CartService);
 
   cocktails = computed(
     () => this.cocktailsService.cocktailsResource.value() || []
@@ -37,6 +37,10 @@ export class CocktailsComponent {
 
   unlikeCocktail(cocktailId: string) {
     this.cartService.unlikeCocktail(cocktailId);
+  }
+
+  addIngredients(ingredients: string[]) {
+    this.cartService.addIngredients(ingredients);
   }
 
   cocktailsIsLoading = this.cocktailsService.cocktailsResource.isLoading;

@@ -13,6 +13,7 @@
 <app-cocktails-details
   (likeCocktail)="likeCocktail($event)"
   (unlikeCocktail)="unlikeCocktail($event)"
+  (addIngredients)="addIngredients($event)"
   [cocktail]="sc"
   [isLiked]="selectedCocktailLiked()"
   class="w-half card"
