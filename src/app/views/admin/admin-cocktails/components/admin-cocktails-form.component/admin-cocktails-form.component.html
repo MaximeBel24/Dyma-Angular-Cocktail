@@ -1,1 +1,60 @@
-<p>admin-cocktails-form.component works!</p>
+@if (this.cocktailId) {
+  <h3 class="mb-20">Modification d'un cocktail</h3>
+} @else {
+
+  <h3 class="mb-20">Création d'un cocktail</h3>
+}
+<form [formGroup]="cocktailForm" (submit)="submit()" class="mb-20">
+  <div class="flex flex-col gap-12 mb-10">
+    <label for="name">Nom du cocktail</label>
+    <input
+      formControlName="name"
+      id="name"
+      type="text"
+      [class.error]="nameControl?.touched && nameControl?.invalid"
+    />
+    @if (nameControl?.errors?.['required'] && nameControl?.touched) {
+    <p class="error">Le nom du cocktail est obligatoire</p>
+    }
+  </div>
+
+  <div class="flex flex-col gap-12 mb-10">
+    <label for="imageUrl">Url de l'image du cocktail</label>
+    <input formControlName="imageUrl" id="imageUrl" type="text" />
+  </div>
+
+  <div class="flex flex-col gap-12 mb-10">
+    <label for="name">Description du cocktail</label>
+    <textarea
+      formControlName="description"
+      id="description"
+      cols="3"
+      rows="8"
+    ></textarea>
+  </div>
+
+  <div class="mb-20">
+    <div class="flex align-items-center gap-12 mb-10">
+      <label class="flex-auto">Ingrédients</label>
+      <button (click)="addIngredient()" class="btn btn-primary" type="button">Ajouter</button>
+    </div>
+    <ul formArrayName="ingredients">
+      @for (ingredient of ingredientsControl.controls; track $index) {
+      <li class="flex align-items-center gap-12 mb-10">
+        <input [formControlName]="$index" type="text" class="flex-auto" />
+        <button (click)="deleteIngredient($index)" class="btn btn-danger" type="button">
+          Supprimer
+        </button>
+      </li>
+      }
+    </ul>
+  </div>
+  <div>
+    <button
+      [disabled]="cocktailForm.invalid || isLoading()"
+      class="btn btn-primary"
+    >
+      Sauvegarder
+    </button>
+  </div>
+</form>
